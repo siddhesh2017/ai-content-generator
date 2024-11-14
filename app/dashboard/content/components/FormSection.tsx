@@ -8,10 +8,11 @@ import { Button } from '@/components/ui/button'
 
 interface PROPS{
     selectedTemplate?:TEMPLATE,
-    userFormInput:any
+    userFormInput:any,
+    loading:boolean,
 }
 
-const FormSection = ({selectedTemplate, userFormInput}:PROPS) => {
+const FormSection = ({selectedTemplate, userFormInput, loading}:PROPS) => {
     const [formData, setFormData] = useState<any>();
     const onSubmit = (e:any) => {
         e.preventDefault();
@@ -37,7 +38,7 @@ const FormSection = ({selectedTemplate, userFormInput}:PROPS) => {
             ))}
             
             <div className='flex justify-end'>
-                <Button type='submit'>Generate Content</Button>
+                <Button type='submit'>{loading ? <div className='bg-transparent animate-pulse' >Generating... </div>: 'Generate Content'}</Button>
             </div>
         </form>
     </div>
