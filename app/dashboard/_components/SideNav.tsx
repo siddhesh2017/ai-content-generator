@@ -37,9 +37,9 @@ function SideNav() {
 
   return (
     <div className='h-screen p-5 shadow-sm border'>
-        <div className='flex justify-center '>
-        <Image src={'/logo.svg'} alt='logo' width={50} height={70}/>
-        <p className='ml-2 text-lg font-extrabold '>ContentCraft AI</p>
+        <div className='flex justify-center items-center gap-2'>
+        <Image src={'/icons8-keydb-48.png'} alt='logo' width={50} height={70}/>
+        <p className=' text-xl font-extrabold '>ContentCraft AI</p>
         </div>
         <hr className='my-6 border'/>
 

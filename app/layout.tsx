@@ -17,7 +17,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 const outfit = Outfit({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: "ContentCraft AI",
+  title: "InspireAI",
   description: "A Content Generating Application",
 };
 
