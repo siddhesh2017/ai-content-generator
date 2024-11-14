@@ -26,9 +26,8 @@ function TemplateListSection({userSearchInput}:any) {
   useEffect(()=>{
    if(userSearchInput)
    {
-    const filterData=Templates.filter(item=>item.name.toLowerCase().includes(userSearchInput.toLowerCase())
-  );
-  setTemplateList(filterData);
+    const filterData=Templates.filter(item=>item.name.toLowerCase().includes(userSearchInput.toLowerCase()));
+    setTemplateList(filterData);
    }
    else{
     setTemplateList(Templates)
@@ -37,7 +36,7 @@ function TemplateListSection({userSearchInput}:any) {
 
 
   return (
-    <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 p-10'>
+    <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 p-10 bg-gradient-to-br from-purple-50 via-orange-50 to-yellow-50 '>
         {templateList.map((item:TEMPLATE,index:number)=>(
             <TemplateCard {...item}/>
         ))}
