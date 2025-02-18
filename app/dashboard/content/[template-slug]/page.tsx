@@ -9,6 +9,10 @@ import { ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
 import { chatSession } from '@/utils/AiModel'
 import { useState } from 'react'
+import { db } from '@/utils/db'
+import { AIOutput } from '@/utils/schema'
+import moment from 'moment'
+import { useUser } from '@clerk/nextjs'
 
 interface PROPS{
   params: {
@@ -20,7 +24,8 @@ const CreateContent = (props:PROPS) => {
 
   const [loading, setLoading] = useState(false);
   const [aiOutput, setAiOutput] = useState<string>('');
-
+  const {user} = useUser();
+  
   const selectedTemplate:TEMPLATE | undefined = Templates?.find(item => item.slug == props.params['template-slug'])
 
   const generateAIContent = async (formData:any) => {
@@ -32,11 +37,42 @@ const CreateContent = (props:PROPS) => {
     console.log(finalPrompt);
 
     const result = await chatSession.sendMessage(finalPrompt);
-    setLoading(false);
-    console.log(result?.response.text());
     setAiOutput(result?.response.text());
+    await SaveInDb(JSON.stringify(formData),selectedTemplate?.slug,result?.response.text());
+    setLoading(false);
+    //console.log(result?.response.text());
+    
   }
 
+  // const SaveInDb = async(formData:any,slug:any,aiResp:string) => {
+  //   const result = await db.insert(AIOutput).values({
+  //     formData:formData,
+  //     templateSlug:slug,
+  //     aiResponse:aiResp,
+  //     createdBy:user?.primaryEmailAddress?.emailAddress,
+  //     createdAt: moment().format('DD/MM/yyyy'),
+  //     });
+  //     // works correctly
+  //     console.log(result);
+  // }
+
+  const SaveInDb = async (formData: any, slug: any, aiResp: string) => {
+    const createdBy = user?.primaryEmailAddress?.emailAddress || 'defaultEmail@example.com' // Fallback if undefined
+    try {
+      const result = await db.insert(AIOutput).values({
+        formData: formData, 
+        templateSlug: slug,
+        aiResponse: aiResp,
+        createdBy: createdBy,
+        createdAt: moment().format('DD/MM/yyyy'),
+      })
+
+      // works correctly
+      console.log(result)
+    } catch (error) {
+      console.error('Error saving data to DB:', error)
+    }
+  }
   return (
     <div className='p-6 bg-gradient-to-br from-purple-50 via-orange-50 to-yellow-50 h-auto'>
       <div>
