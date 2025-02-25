@@ -3,6 +3,7 @@ import { FileClock, Home, Settings, WalletCards} from 'lucide-react'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import React, { useEffect } from 'react'
+import UsageTrack from './UsageTrack'
 
 function SideNav() {
 
@@ -36,7 +37,7 @@ function SideNav() {
       // },[])
 
   return (
-    <div className='h-screen p-5 shadow-sm border'>
+    <div className='h-screen p-5 shadow-sm border relative'>
         <div className='flex justify-center items-center gap-2'>
         <Image src={'/icons8-keydb-48.png'} alt='logo' width={50} height={70}/>
         <p className=' text-xl font-extrabold '>ContentCraft AI</p>
@@ -50,6 +51,10 @@ function SideNav() {
                     <h2 className='text-md'>{menu.name}</h2>
                     </div>
             ))}
+        </div>
+
+        <div className='absolute bottom-10 left-0 w-full'>
+          < UsageTrack />
         </div>
     </div>
   )

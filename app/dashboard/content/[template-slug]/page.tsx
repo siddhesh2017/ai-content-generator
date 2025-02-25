@@ -13,6 +13,9 @@ import { db } from '@/utils/db'
 import { AIOutput } from '@/utils/schema'
 import moment from 'moment'
 import { useUser } from '@clerk/nextjs'
+import { TotalUsageContext } from '@/app/(context)/TotalUsageContext';
+import { useContext } from 'react'
+import { useRouter } from 'next/navigation'
 
 interface PROPS{
   params: {
@@ -25,11 +28,21 @@ const CreateContent = (props:PROPS) => {
   const [loading, setLoading] = useState(false);
   const [aiOutput, setAiOutput] = useState<string>('');
   const {user} = useUser();
+  const router = useRouter();
   
   const selectedTemplate:TEMPLATE | undefined = Templates?.find(item => item.slug == props.params['template-slug'])
 
+  const {totalUsage, setTotalUsage} = useContext(TotalUsageContext)
+
   const generateAIContent = async (formData:any) => {
-    
+    //after development make it 10,000
+    if(totalUsage>=100000){
+      //alert("Please Upgrade")
+      console.log("Please Upgrade");
+      router.push('/dashboard/billing/page');
+      return; 
+    }
+
     setLoading(true);
 
     const selectedPrompt = selectedTemplate?.aiPrompt;

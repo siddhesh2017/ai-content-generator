@@ -18,7 +18,7 @@ const OutputSection = ({aiOutput}:PROPS) => {
     <div className='bg-white shadow-lg rounded-xl'>
       <div className='flex justify-between items-center p-2'>
         <h2 className='font-xl font-bold'>Your Result</h2>
-        <Button className='flex gap-2'><Copy width={18} /> Copy</Button>
+        <Button className='flex gap-2' onClick={()=>navigator.clipboard.writeText(aiOutput)}><Copy width={18} /> Copy</Button>
       </div>
       <Editor
         initialValue="Your result will appear here 😊"
