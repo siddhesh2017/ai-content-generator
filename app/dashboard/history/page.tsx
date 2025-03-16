@@ -8,6 +8,7 @@ import { useUser } from "@clerk/nextjs";
 import { db } from "@/utils/db";
 import { AIOutput } from "@/utils/schema";
 import { desc, eq } from "drizzle-orm";
+import { Copy } from 'lucide-react';
 
 export interface HISTORY {
   ID: number;
@@ -65,54 +66,83 @@ function History() {
   };
 
   return (
-    <div className="m-5 p-5 rounded-lg bg-white">
-      <h2 className="font-bold text-3xl">History</h2>
-      <p className="text-gray-500">Search your previously generated AI content</p>
-
-      {/* Table Header */}
-      <div className="grid grid-cols-7 font-bold bg-secondary mt-5 py-3 px-3">
-        <h2 className="col-span-2">TEMPLATE</h2>
-        <h2 className="col-span-2">AI RESP</h2>
-        <h2>DATE</h2>
-        <h2>WORDS</h2>
-        <h2>COPY</h2>
-      </div>
-
-      {/* Data Rows */}
-      {historyList.map((item, index) => (
-        <div className="grid grid-cols-7 my-5 py-3 px-3" key={item.ID}>
-          {/* Template Name & Icon */}
-          <h2 className="col-span-2 flex gap-2 items-center">
-            <Image
-              src={Templates?.find((t) => t.slug === item.templateSlug)?.icon || "/fallback-image.png"}
-              width={25}
-              height={25}
-              alt="Template Icon"
-            />
-            {getTemplateName(item.templateSlug)}
-          </h2>
-
-          {/* AI Response */}
-          <h2 className="col-span-2 line-clamp-3">{item.aiResponse}</h2>
-
-          {/* Date */}
-          <h2>{item.createdAt}</h2>
-
-          {/* Word Count */}
-          <h2>{item.aiResponse?.length || 0}</h2>
-
-          {/* Copy Button */}
-          <h2>
-            <Button
-              variant="ghost"
-              className="text-primary"
-              onClick={() => handleCopy(item.aiResponse, index)}
-            >
-              {copiedIndex === index ? "Copied!" : "Copy"}
-            </Button>
-          </h2>
+    <div className="m-5 p-6 rounded-xl bg-white shadow-lg">
+      <div className="flex justify-between items-center mb-4">
+        <div>
+          <h2 className="font-bold text-3xl bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent">History</h2>
+          <p className="text-gray-500">Search your previously generated AI content</p>
         </div>
-      ))}
+      </div>
+      
+      {/* Table Header */}
+      <div className="grid grid-cols-7 font-bold bg-secondary rounded-lg mt-6 py-3 px-5 shadow-sm">
+        <h2 className="col-span-2 text-sm uppercase tracking-wider">Template</h2>
+        <h2 className="col-span-2 text-sm uppercase tracking-wider">AI Response</h2>
+        <h2 className="text-sm uppercase tracking-wider">Date</h2>
+        <h2 className="text-sm uppercase tracking-wider">Words</h2>
+        <h2 className="text-sm uppercase tracking-wider">Actions</h2>
+      </div>
+      
+      {/* Data Rows */}
+      {historyList.length === 0 ? (
+        <div className="text-center py-10 text-gray-500">
+          No history found. Generate your first AI content!
+        </div>
+      ) : (
+        historyList.map((item, index) => (
+          <div 
+            className="grid grid-cols-7 py-4 px-5 border-b hover:bg-gray-50 transition-colors duration-150 items-center" 
+            key={item.ID}
+          >
+            {/* Template Name & Icon */}
+            <div className="col-span-2 flex gap-2 items-center">
+              <div className="bg-secondary p-1.5 rounded-md">
+                <Image 
+                  src={Templates?.find((t) => t.slug === item.templateSlug)?.icon || "/fallback-image.png"} 
+                  width={20} 
+                  height={20} 
+                  alt="Template Icon" 
+                  className="opacity-80" 
+                />
+              </div>
+              <span className="font-medium text-gray-800">{getTemplateName(item.templateSlug)}</span>
+            </div>
+            
+            {/* AI Response */}
+            <p className="col-span-2 line-clamp-2 text-sm text-gray-600">{item.aiResponse}</p>
+            
+            {/* Date */}
+            <div className="text-sm text-gray-600">{item.createdAt}</div>
+            
+            {/* Word Count */}
+            <div className="text-sm">
+              <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-medium">
+                {item.aiResponse?.split(/\s+/).length || 0} words
+              </span>
+            </div>
+            
+            {/* Actions */}
+            <div className="flex gap-1">
+              <Button 
+                variant="ghost" 
+                size="sm"
+                className="text-primary hover:bg-primary/10"
+                onClick={() => handleCopy(item.aiResponse, index)}
+              >
+                {copiedIndex === index ? (
+                  <span className="flex items-center gap-1">
+                    <span className="h-4 w-4">✓</span> Copied
+                  </span>
+                ) : (
+                  <span className="flex items-center gap-1">
+                    <Copy size={14} /> Copy
+                  </span>
+                )}
+              </Button>
+            </div>
+          </div>
+        ))
+      )}
     </div>
   );
 }
