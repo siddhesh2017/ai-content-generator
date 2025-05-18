@@ -16,7 +16,7 @@ const isProtectedRoute = createRouteMatcher([
 ])
 
 // Matches routes that should be publicly accessible
-const isPublicRoute = createRouteMatcher(['/sign-in(.*)', '/sign-up(.*)']) // Allows public access for sign-in and sign-up pages
+const isPublicRoute = createRouteMatcher(['/sign-in(.*)', '/sign-up(.*)',]) // Allows public access for sign-in and sign-up pages
 
 export const config = {
   matcher: [
