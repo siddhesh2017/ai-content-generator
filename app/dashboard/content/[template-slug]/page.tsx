@@ -13,6 +13,9 @@ import { db } from '@/utils/db'
 import { AIOutput } from '@/utils/schema'
 import moment from 'moment'
 import { useUser } from '@clerk/nextjs'
+import { TotalUsageContext } from '@/app/(context)/TotalUsageContext';
+import { useContext } from 'react'
+import { useRouter } from 'next/navigation'
 
 interface PROPS{
   params: {
@@ -25,24 +28,34 @@ const CreateContent = (props:PROPS) => {
   const [loading, setLoading] = useState(false);
   const [aiOutput, setAiOutput] = useState<string>('');
   const {user} = useUser();
+  const router = useRouter();
   
   const selectedTemplate:TEMPLATE | undefined = Templates?.find(item => item.slug == props.params['template-slug'])
 
-  const generateAIContent = async (formData:any) => {
-    
-    setLoading(true);
+  const {totalUsage, setTotalUsage} = useContext(TotalUsageContext)
 
-    const selectedPrompt = selectedTemplate?.aiPrompt;
-    const finalPrompt = JSON.stringify(formData)+', '+selectedPrompt;
-    console.log(finalPrompt);
+  // const generateAIContent = async (formData:any) => {
+  //   //after development make it 10,000
+  //   if(totalUsage>=100000){
+  //     //alert("Please Upgrade")
+  //     console.log("Please Upgrade");
+  //     router.push('/dashboard/billing/page');
+  //     return; 
+  //   }
 
-    const result = await chatSession.sendMessage(finalPrompt);
-    setAiOutput(result?.response.text());
-    await SaveInDb(JSON.stringify(formData),selectedTemplate?.slug,result?.response.text());
-    setLoading(false);
-    //console.log(result?.response.text());
+  //   setLoading(true);
+
+  //   const selectedPrompt = selectedTemplate?.aiPrompt;
+  //   const finalPrompt = JSON.stringify(formData)+', '+selectedPrompt;
+  //   console.log(finalPrompt);
+
+  //   const result = await chatSession.sendMessage(finalPrompt);
+  //   setAiOutput(result?.response.text());
+  //   await SaveInDb(JSON.stringify(formData),selectedTemplate?.slug,result?.response.text());
+  //   setLoading(false);
+  //   //console.log(result?.response.text());
     
-  }
+  // }
 
   // const SaveInDb = async(formData:any,slug:any,aiResp:string) => {
   //   const result = await db.insert(AIOutput).values({
@@ -56,6 +69,37 @@ const CreateContent = (props:PROPS) => {
   //     console.log(result);
   // }
 
+  const [latestFormData, setLatestFormData] = useState<any>(null); // Store form data
+
+  const generateAIContent = async (formData: any) => {
+    if (totalUsage >= 100000) {
+      console.log("Please Upgrade");
+      router.push('/dashboard/billing/page');
+      return;
+    }
+  
+    setLoading(true);
+    setLatestFormData(formData); // Store form data for later use
+  
+    const selectedPrompt = selectedTemplate?.aiPrompt;
+    const finalPrompt = JSON.stringify(formData) + ', ' + selectedPrompt;
+    console.log(finalPrompt);
+  
+    const result = await chatSession.sendMessage(finalPrompt);
+    let aiResponse = result?.response.text();
+  
+    // Convert AI response from HTML to Markdown
+    if (aiResponse.startsWith('<')) { 
+      const tempDiv = document.createElement('div');
+      tempDiv.innerHTML = aiResponse;
+      aiResponse = tempDiv.innerText; // Extract clean text from HTML
+    }
+  
+    setAiOutput(aiResponse);
+    await SaveInDb(formData, selectedTemplate?.slug, aiResponse); // Save the cleaned response
+    setLoading(false);
+  };
+ 
   const SaveInDb = async (formData: any, slug: any, aiResp: string) => {
     const createdBy = user?.primaryEmailAddress?.emailAddress || 'defaultEmail@example.com' // Fallback if undefined
     try {
@@ -73,6 +117,31 @@ const CreateContent = (props:PROPS) => {
       console.error('Error saving data to DB:', error)
     }
   }
+
+  //Add user modified data to DB
+  const handleSaveToDb = async (updatedAiOutput: string) => {
+    if (!selectedTemplate || !latestFormData) {
+      console.error("Missing formData or selectedTemplate.");
+      return;
+    }
+  
+    const createdBy = user?.primaryEmailAddress?.emailAddress || 'defaultEmail@example.com';
+  
+    try {
+      await db.insert(AIOutput).values({
+        formData: JSON.stringify(latestFormData),  // Use stored formData
+        templateSlug: selectedTemplate.slug,
+        aiResponse: updatedAiOutput,
+        createdBy: createdBy,
+        createdAt: moment().format('DD/MM/yyyy'),
+      });
+      console.log('Data successfully saved to DB!');
+    } catch (error) {
+      console.error('Error saving updated output to DB:', error);
+    }
+  };
+  
+  
   return (
     <div className='p-6 bg-gradient-to-br from-purple-50 via-orange-50 to-yellow-50 h-auto'>
       <div>
@@ -85,11 +154,11 @@ const CreateContent = (props:PROPS) => {
         <FormSection userFormInput={(v:any)=> generateAIContent(v)} selectedTemplate={selectedTemplate} loading={loading} />
         {/* OutputSection */}
         <div className='col-span-2'>
-          <OutputSection aiOutput={aiOutput} />
+        <OutputSection aiOutput={aiOutput} onSave={handleSaveToDb} /> {/* Pass onSave function */}
         </div>
       </div>
     </div>
-  ) 
+  );
 }
 
 export default CreateContent
