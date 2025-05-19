@@ -1,5 +1,9 @@
 @import url('https://fonts.cdnfonts.com/css/gilroy-bold');
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Paytone+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+@import "locomotive-scroll/dist/locomotive-scroll.css";
+
+
 
 @tailwind base;
 @tailwind components;
@@ -10,8 +14,39 @@ body {
 }
 
 @layer utilities {
+  .scrollbar-hidden::-webkit-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-hidden::-webkit-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
   .text-balance {
     text-wrap: balance;
+  }
+
+  .minimal-scrollbar::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  .minimal-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .minimal-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+  }
+
+  .minimal-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  .minimal-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
   }
 
   .bg-pattern {
@@ -164,3 +199,4 @@ body {
     @apply bg-background text-foreground;
   }
 }
+

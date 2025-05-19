@@ -28,7 +28,7 @@ export default function RootLayout({
 }>) {
   return (
       <ClerkProvider>
-      <html lang="en">
+      <html lang="en" className="scrollbar-hidden">
         <body
           className={`${outfit.className} ${outfit.className} antialiased`}
         >
