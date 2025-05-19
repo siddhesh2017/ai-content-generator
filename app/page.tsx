@@ -70,7 +70,7 @@ export default function Home() {
   }, [scrollDirection]);
 
   return (
-    <div className="w-full h-auto flex flex-col items-center justify-center bg-[#F5F5F5] font-gilroy minimal-scrollbar">
+    <div className="w-full h-auto flex flex-col items-center justify-center bg-[#F5F5F5] font-gilroy no-scrollbar "> 
       <nav 
         ref={navbarRef}
         className="w-[97%] h-20 my-7 p-5 bg-black backdrop-blur-sm rounded-2xl fixed top-0 z-30 flex justify-start items-center gap-10 text-white"
