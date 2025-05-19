@@ -11,10 +11,14 @@ const Section1 = () => {
     useGSAP(() => {
       gsap.registerPlugin(ScrollTrigger);
 
-      const t1 = gsap.timeline({
+      //document.body.style.overflow = 'hidden';
 
+      const t1 = gsap.timeline({
+        onComplete: () => {
+          // Enable scrolling when all animations in t1 are complete
+          document.body.style.overflow = 'auto';
+        }
       });
-      
       t1.from(".we-fuel-the span", {
         y: 100,
         opacity: 0.3,
@@ -86,7 +90,7 @@ const Section1 = () => {
           start: "top -10%",
           end: "top -90%",
           scrub: 5,
-          markers: true,
+          //markers: true,
         },
       });
 
@@ -229,7 +233,6 @@ const Section1 = () => {
             <span className='inline-block'>M</span>
             <span className='inline-block'>A</span>
             <span className='inline-block'>N</span>
-            <span className='inline-block'>S</span>
           </div>
         </div>
         
