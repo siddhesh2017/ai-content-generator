@@ -10,6 +10,7 @@ export interface TEMPLATE {
     slug: string;
     aiPrompt: string;
     form: FORM[];
+    color?: string; // Added color property
   }
   
   export interface FORM {
@@ -37,7 +38,7 @@ function TemplateListSection({userSearchInput}:any) {
 
 
   return (
-    <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 p-10 bg-gradient-to-br from-purple-50 via-orange-50 to-yellow-50 '>
+    <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 p-10 bg-black '>
         {templateList.map((item:TEMPLATE,index:number)=>(
             <TemplateCard {...item}/>
         ))}

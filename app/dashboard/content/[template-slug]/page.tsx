@@ -143,7 +143,7 @@ const CreateContent = (props:PROPS) => {
   
   
   return (
-    <div className='p-6 bg-gradient-to-br from-purple-50 via-orange-50 to-yellow-50 h-auto'>
+    <div className='p-6 rounded-xl bg-black h-auto'>
       <div>
         <Link href={'/dashboard'}>
           <Button><ArrowLeft/></Button>
