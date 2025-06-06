@@ -4,15 +4,15 @@ import SearchSection from './_components/SearchSection'
 import TemplateListSection from './_components/TemplateListSection'
 
 function Dashboard() {
-  const [userSearchInput,setUserSearchInput]=useState<string>()
+  const [userSearchInput, setUserSearchInput] = useState<string>()
+
   return (
-    <div>
+    <div className='rounded-xl overflow-hidden'>
       {/* Search Section */}
-      <SearchSection onSearchInput={(value:string)=>setUserSearchInput
-        (value)}/>
+      <SearchSection onSearchInput={(value: string) => setUserSearchInput(value)} />
 
       {/* Template List Section */}
-      <TemplateListSection userSearchInput={userSearchInput}/>
+      <TemplateListSection userSearchInput={userSearchInput} />
     </div>
   )
 }
