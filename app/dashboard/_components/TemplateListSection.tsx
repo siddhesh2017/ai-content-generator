@@ -22,7 +22,8 @@ export interface TEMPLATE {
 
 function TemplateListSection({userSearchInput}:any) {
 
-  const [templateList,setTemplateList]=useState(Templates)
+  const [templateList,setTemplateList]=useState(Templates);
+  
   useEffect(()=>{
    if(userSearchInput)
    {

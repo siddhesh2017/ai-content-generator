@@ -209,42 +209,42 @@ export default[
                
         //     ]
         // },
-        // {
-        //     name: 'Instagram Post/Reel Idea',
-        //     desc: 'An AI tool that generate New and trending instagram idea depends on your niche',
-        //     icon: 'https://cdn-icons-png.flaticon.com/128/1029/1029183.png',
-        //     category: 'instagram',
+        {
+            name: 'Instagram Post/Reel Idea',
+            desc: 'An AI tool that generate New and trending instagram idea depends on your niche',
+            icon: 'https://cdn-icons-png.flaticon.com/128/1029/1029183.png',
+            category: 'instagram',
            
-        //     slug: 'instagram-post-idea-generator',
-        //     aiPrompt: 'Generate 5-10 Instagram idea depends on niche with latest trend and give output in  in rich text editor format',
-        //     form: [
-        //         {
-        //             label: 'Enter Keywords / Niche for your instagram idea',
-        //             field: 'input',
-        //             name: 'keywords',
-        //             required:true
-        //         },
+            slug: 'instagram-post-idea-generator',
+            aiPrompt: 'Generate 5-10 Instagram idea depends on niche with latest trend and give output in  in rich text editor format',
+            form: [
+                {
+                    label: 'Enter Keywords / Niche for your instagram idea',
+                    field: 'input',
+                    name: 'keywords',
+                    required:true
+                },
                
-        //     ]
-        // },
-        // {
-        //     name: 'English Grammer Check',
-        //     desc: 'AI Model to Correct your english grammer by providing the text',
-        //     icon:'https://cdn-icons-png.flaticon.com/128/12596/12596700.png',
-        //     category: 'english',
+            ]
+        },
+        {
+            name: 'English Grammer Check',
+            desc: 'AI Model to Correct your english grammer by providing the text',
+            icon:'https://cdn-icons-png.flaticon.com/128/12596/12596700.png',
+            category: 'english',
            
-        //     slug: 'english-grammer-checker',
-        //     aiPrompt: 'Rewrite the inputText by correcting the grammer and give output in  in rich text editor format',
-        //     form: [
-        //         {
-        //             label: 'Enter text to correct the grammer',
-        //             field: 'input',
-        //             name: 'inputText',
-        //             required:true
-        //         },
+            slug: 'english-grammer-checker',
+            aiPrompt: 'Rewrite the inputText by correcting the grammer and give output in  in rich text editor format',
+            form: [
+                {
+                    label: 'Enter text to correct the grammer',
+                    field: 'input',
+                    name: 'inputText',
+                    required:true
+                },
                
-        //     ]
-        // },
+            ]
+        },
         // {
         //     name: 'Write Code',
         //     desc: 'AI Model to generate programming code in any language',
