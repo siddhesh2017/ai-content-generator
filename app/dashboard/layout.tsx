@@ -14,7 +14,6 @@ function layout({ children, }: Readonly<{ children: React.ReactNode; }>) {
           <SideNav/>
       </div>
       <div className="md:ml-64">
-          <Header/>
       {children}
       </div>
     </div>

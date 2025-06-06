@@ -1,9 +1,8 @@
 import React from 'react'
-import {Search} from 'lucide-react'
 
-function Header() {
+const Header = () => {
   return (
-    <></>
+    <div>Header</div>
   )
 }
 

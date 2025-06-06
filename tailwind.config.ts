@@ -73,8 +73,16 @@ const config: Config = {
           '-webkit-text-stroke': '1px black',
           'color': 'transparent',
         },
+        '.text-outline-light': {
+          '-webkit-text-stroke': '1px white',
+          'color': 'transparent',
+        },
         '.text-outline-2': {
           '-webkit-text-stroke': '2px black',
+          'color': 'transparent',
+        },
+        '.text-outline-2-light': {
+          '-webkit-text-stroke': '2px white',
           'color': 'transparent',
         }
       });
