@@ -4,7 +4,7 @@ export default[
         desc:'An AI tool that generates blog title depends on your blog information',
         category:'Blog',
         icon:'https://cdn-icons-png.flaticon.com/128/2800/2800015.png',
-        aiPrompt:'Give me 5 blog topic idea in bullet wise only based on given niche & outline and give me result in Rich text editor format',
+        aiPrompt:'Act like a professional blog writer. Suggest me 10 SEO-optimized ,creative, attention-grabbing blog titles in bullet points based on the keywords provided in begining .Do not explain anything just provide the titles.',
         slug:'generate-blog-title',
         form:[
             {
@@ -28,7 +28,7 @@ export default[
             category: 'blog',
             icon: 'https://cdn-icons-png.flaticon.com/128/4905/4905454.png',
             slug: 'blog-content-generation',
-            aiPrompt: 'Generate Blog Content based on topic and outline in rich text editor format',
+            aiPrompt: 'Act like a professional blog writer. Generate SEO friendly Blog Content based on keyword and outline provided in begining. The blog should be around 500 words, and be structured with an introduction, subheadings, and a conclusion. End with a proper summary.',
             form: [
                 {
                     label: 'Enter your blog topic',
@@ -49,7 +49,7 @@ export default[
             category: 'Blog',
             icon: 'https://cdn-icons-png.flaticon.com/128/11497/11497847.png',
             slug: 'blog-topic-idea',
-            aiPrompt: 'Generate top 5 Blog Topic Ideas in bullet point only, (no Description) based on niche in rich text editor format',
+            aiPrompt: 'Suggest top 10 viral worthy, trending blog topic ideas that are currently popular related to provided keywords  earlier . The topics should be relevant for audience of keyword provided earlier and based on recent trends from platforms like Google and social media. Keep the tone friendly and easy to understand.Dont give heading and summary',
             form: [
                 {
                     label: 'Enter your Niche',
@@ -65,7 +65,7 @@ export default[
             category: 'Youtube Tools',
             icon: 'https://cdn-icons-png.flaticon.com/128/402/402075.png',
             slug: 'youtube-seo-title',
-            aiPrompt: 'Give me Best SEO optimized high ranked 5 title ideas bullet wise only bases on keywords and outline and give me result in HTML tags format',
+            aiPrompt: 'Generate top 10 SEO-optimized,viral worthy YouTube video titles for a video about keyword provided in begining, targeting relevant audience. The title should  be engaging and designed to increase CTR. Use a friendly tone. Keep each title under 70 characters if possible.',
             form: [
                 {
                     label: 'Enter your youtube video topic keyowords',
@@ -88,7 +88,7 @@ export default[
             category: 'Youtube Tool',
             icon: 'https://cdn-icons-png.flaticon.com/128/2111/2111748.png',
             slug: 'youtube-description',
-            aiPrompt: 'Generate Youtube description with emoji under 4-5 lines based on topic and outline in rich text editor format',
+            aiPrompt: 'Write a compelling, SEO-optimized YouTube video description for a video based on keyword provided earlier , aimed at relevant audience.Make it engaging and informative. Add a call to action encouraging viewers to Like Subscribe and support my youtube channel.Also add relevant hashtags and emojis',
             form: [
                 {
                     label: 'Enter your blog topic/title',
@@ -110,7 +110,7 @@ export default[
             icon: 'https://cdn-icons-png.flaticon.com/128/4674/4674918.png',
             slug: 'youtube-tag',
     
-            aiPrompt: 'Generate 10 Youtube tags in bullet point based on title and outline in rich text editor format',
+            aiPrompt: 'Generate 15 SEO-friendly YouTube tags for a video based on keyword provided earlier, targeting relevant address to keyword. Include variations, long-tail keywords, and trending phrases related to keywords. Keep each tag short (1–4 words), relevant, and optimized for search,trendy.Make use of #',
     
             form: [
                 {
@@ -216,7 +216,7 @@ export default[
             category: 'instagram',
            
             slug: 'instagram-post-idea-generator',
-            aiPrompt: 'Generate 5-10 Instagram idea depends on niche with latest trend and give output in  in rich text editor format',
+            aiPrompt: 'Generate 5 creative and trending Instagram content ideas related to keyword provided earlier . The content should aim to either help user or entertain him based on keyword , be suitable for audience relevant to keyword, and have a friendly tone.Each idea should include:A content hook or caption idea ,A brief content description,A visual concept suggestion,(Optional) Relevant hashtag suggestions.Keep each idea concise, creative, and aligned with the latest Instagram engagement strategies.',
             form: [
                 {
                     label: 'Enter Keywords / Niche for your instagram idea',
@@ -234,7 +234,7 @@ export default[
             category: 'english',
            
             slug: 'english-grammer-checker',
-            aiPrompt: 'Rewrite the inputText by correcting the grammer and give output in  in rich text editor format',
+            aiPrompt: 'You are an expert English grammar corrector.Analyze the provided text for grammatical, punctuation, spelling, and stylistic errors.Your response should follow this format:Original Sentence (with errors) – Highlight the mistakes clearly (bold or markdown), Corrected Sentence – Provide the corrected version,Explanation (if requested) – Briefly explain the changes made.',
             form: [
                 {
                     label: 'Enter text to correct the grammer',
