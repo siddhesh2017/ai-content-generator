@@ -88,7 +88,7 @@ export default[
             category: 'Youtube Tool',
             icon: 'https://cdn-icons-png.flaticon.com/128/2111/2111748.png',
             slug: 'youtube-description',
-            aiPrompt: 'Write a compelling, SEO-optimized YouTube video description for a video based on keyword provided earlier , aimed at relevant audience.Make it engaging and informative. Add a call to action encouraging viewers to Like Subscribe and support my youtube channel.Also add relevant hashtags and emojis',
+            aiPrompt: 'Write a compelling, SEO-optimized YouTube video description for a video based on YouTube SEO keywords and keyword provided earlier , aimed at relevant audience.Make it engaging and informative. Add a call to action encouraging viewers to Like Subscribe and support my youtube channel.Also add relevant hashtags, emojis and space for social media links ',
             form: [
                 {
                     label: 'Enter your blog topic/title',
@@ -270,7 +270,7 @@ export default[
             category: 'Coding',
            
             slug: 'explain-code',
-            aiPrompt: 'You are an expert programming tutor. Your task is to analyze the provided code and explain what it does in simple, clear language. Break down the logic step by step, describe the purpose of functions, variables, loops, and conditions, and highlight how the code flows. Use bullet points or paragraphs to make the explanation easy to understand, especially for beginners. Include the programming language name and assume the user may not be familiar with advanced concepts. Only focus on explaining the given code — do not modify it or provide alternative versions.',
+            aiPrompt: 'You are an expert programming tutor. Your task is to analyze the provided code and explain each unique concept the code has, what it does in simple, clear language. Break down the logic step by step, describe the purpose of functions, variables, loops, and conditions, aslo show  that particular part of code and highlight how the code flows. Use bullet points or paragraphs to make the explanation easy to understand, especially for beginners. Include the programming language name and assume the user may not be familiar with advanced concepts. Only focus on explaining the given code — do not modify it or provide alternative versions.',
             form: [
                 {
                     label: 'Enter code which you want to understand',
