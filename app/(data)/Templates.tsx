@@ -4,7 +4,7 @@ export default[
         desc:'An AI tool that generates blog title depends on your blog information',
         category:'Blog',
         icon:'https://cdn-icons-png.flaticon.com/128/2800/2800015.png',
-        aiPrompt:'Give me 5 blog topic idea in bullet wise only based on given niche & outline and give me result in Rich text editor format',
+        aiPrompt:'Act like a professional blog writer. Suggest me 10 SEO-optimized ,creative, attention-grabbing blog titles in bullet points based on the keywords provided in begining .Do not explain anything just provide the titles.',
         slug:'generate-blog-title',
         form:[
             {
@@ -28,7 +28,7 @@ export default[
             category: 'blog',
             icon: 'https://cdn-icons-png.flaticon.com/128/4905/4905454.png',
             slug: 'blog-content-generation',
-            aiPrompt: 'Generate Blog Content based on topic and outline in rich text editor format',
+            aiPrompt: 'Act like a professional blog writer. Generate SEO friendly Blog Content based on keyword and outline provided in begining. The blog should be around 500 words, and be structured with an introduction, subheadings, and a conclusion. End with a proper summary.',
             form: [
                 {
                     label: 'Enter your blog topic',
@@ -49,7 +49,7 @@ export default[
             category: 'Blog',
             icon: 'https://cdn-icons-png.flaticon.com/128/11497/11497847.png',
             slug: 'blog-topic-idea',
-            aiPrompt: 'Generate top 5 Blog Topic Ideas in bullet point only, (no Description) based on niche in rich text editor format',
+            aiPrompt: 'Suggest top 10 viral worthy, trending blog topic ideas that are currently popular related to provided keywords  earlier . The topics should be relevant for audience of keyword provided earlier and based on recent trends from platforms like Google and social media. Keep the tone friendly and easy to understand.Dont give heading and summary',
             form: [
                 {
                     label: 'Enter your Niche',
@@ -65,7 +65,7 @@ export default[
             category: 'Youtube Tools',
             icon: 'https://cdn-icons-png.flaticon.com/128/402/402075.png',
             slug: 'youtube-seo-title',
-            aiPrompt: 'Give me Best SEO optimized high ranked 5 title ideas bullet wise only bases on keywords and outline and give me result in HTML tags format',
+            aiPrompt: 'Generate top 10 SEO-optimized,viral worthy YouTube video titles for a video about keyword provided in begining, targeting relevant audience. The title should  be engaging and designed to increase CTR. Use a friendly tone. Keep each title under 70 characters if possible.',
             form: [
                 {
                     label: 'Enter your youtube video topic keyowords',
@@ -88,7 +88,7 @@ export default[
             category: 'Youtube Tool',
             icon: 'https://cdn-icons-png.flaticon.com/128/2111/2111748.png',
             slug: 'youtube-description',
-            aiPrompt: 'Generate Youtube description with emoji under 4-5 lines based on topic and outline in rich text editor format',
+            aiPrompt: 'Write a compelling, SEO-optimized YouTube video description for a video based on YouTube SEO keywords and keyword provided earlier , aimed at relevant audience.Make it engaging and informative. Add a call to action encouraging viewers to Like Subscribe and support my youtube channel.Also add relevant hashtags, emojis and space for social media links ',
             form: [
                 {
                     label: 'Enter your blog topic/title',
@@ -110,7 +110,7 @@ export default[
             icon: 'https://cdn-icons-png.flaticon.com/128/4674/4674918.png',
             slug: 'youtube-tag',
     
-            aiPrompt: 'Generate 10 Youtube tags in bullet point based on title and outline in rich text editor format',
+            aiPrompt: 'Generate 15 SEO-friendly YouTube tags for a video based on keyword provided earlier, targeting relevant address to keyword. Include variations, long-tail keywords, and trending phrases related to keywords. Keep each tag short (1–4 words), relevant, and optimized for search,trendy.Make use of #',
     
             form: [
                 {
@@ -216,7 +216,7 @@ export default[
             category: 'instagram',
            
             slug: 'instagram-post-idea-generator',
-            aiPrompt: 'Generate 5-10 Instagram idea depends on niche with latest trend and give output in  in rich text editor format',
+            aiPrompt: 'Generate 5 creative and trending Instagram content ideas related to keyword provided earlier . The content should aim to either help user or entertain him based on keyword , be suitable for audience relevant to keyword, and have a friendly tone.Each idea should include:A content hook or caption idea ,A brief content description,A visual concept suggestion,(Optional) Relevant hashtag suggestions.Keep each idea concise, creative, and aligned with the latest Instagram engagement strategies.',
             form: [
                 {
                     label: 'Enter Keywords / Niche for your instagram idea',
@@ -234,7 +234,7 @@ export default[
             category: 'english',
            
             slug: 'english-grammer-checker',
-            aiPrompt: 'Rewrite the inputText by correcting the grammer and give output in  in rich text editor format',
+            aiPrompt: 'You are an expert English grammar corrector.Analyze the provided text for grammatical, punctuation, spelling, and stylistic errors.Your response should follow this format:Original Sentence (with errors) – Highlight the mistakes clearly (bold or markdown), Corrected Sentence – Provide the corrected version,Explanation (if requested) – Briefly explain the changes made.',
             form: [
                 {
                     label: 'Enter text to correct the grammer',
@@ -245,42 +245,42 @@ export default[
                
             ]
         },
-        // {
-        //     name: 'Write Code',
-        //     desc: 'AI Model to generate programming code in any language',
-        //     icon:'https://cdn-icons-png.flaticon.com/128/6062/6062646.png',
-        //     category: 'Coding',
+        {
+            name: 'Write Code',
+            desc: 'AI Model to generate programming code in any language',
+            icon:'https://cdn-icons-png.flaticon.com/128/6062/6062646.png',
+            category: 'Coding',
            
-        //     slug: 'write-code',
-        //     aiPrompt: 'Depends on user codeDescription write a code and give output in  in rich text editor format in code block ',
-        //     form: [
-        //         {
-        //             label: 'Enter description of code you want along with Programming Lang',
-        //             field: 'textarea',
-        //             name: 'codeDesscripton',
-        //             required:true
-        //         },
+            slug: 'write-code',
+            aiPrompt: 'You are an expert software developer. Generate clean, efficient, and well-commented code based on the user’s functionality description and specified programming language. Follow best practices, ensure the code is beginner-friendly, and include inline comments where helpful. Only return the final code block—no extra explanations. The user will provide the language, a brief task description, and any optional constraints in the begining. Use this to produce ready-to-run, properly formatted code.If the code is in cpp then use namespace s ',
+            form: [
+                {
+                    label: 'Enter description of code you want along with Programming Lang',
+                    field: 'textarea',
+                    name: 'codeDesscripton',
+                    required:true
+                },
                
-        //     ]
-        // },
-        // {
-        //     name: 'Explain Code',
-        //     desc: 'AI Model to explain programming code in any language',
-        //     icon:'https://cdn-icons-png.flaticon.com/128/8488/8488751.png',
-        //     category: 'Coding',
+            ]
+        },
+        {
+            name: 'Explain Code',
+            desc: 'AI Model to explain programming code in any language',
+            icon:'https://cdn-icons-png.flaticon.com/128/8488/8488751.png',
+            category: 'Coding',
            
-        //     slug: 'explain-code',
-        //     aiPrompt: 'Depends on user codeDescription explain code line by line and give output in  in rich text editor format in code block ',
-        //     form: [
-        //         {
-        //             label: 'Enter code which you want to understand',
-        //             field: 'textarea',
-        //             name: 'codeDesscripton',
-        //             required:true
-        //         },
+            slug: 'explain-code',
+            aiPrompt: 'You are an expert programming tutor. Your task is to analyze the provided code and explain each unique concept the code has, what it does in simple, clear language. Break down the logic step by step, describe the purpose of functions, variables, loops, and conditions, aslo show  that particular part of code and highlight how the code flows. Use bullet points or paragraphs to make the explanation easy to understand, especially for beginners. Include the programming language name and assume the user may not be familiar with advanced concepts. Only focus on explaining the given code — do not modify it or provide alternative versions.',
+            form: [
+                {
+                    label: 'Enter code which you want to understand',
+                    field: 'textarea',
+                    name: 'codeDesscripton',
+                    required:true
+                },
                
-        //     ]
-        // },
+            ]
+        },
         // {
         //     name: 'Code Bug Detector',
         //     desc: 'This tool analyzes your input, like error messages and code snippets, to pinpoint and fix bugs, offering detailed solutions and alternatives in a straightforward, user-friendly way.',
@@ -323,29 +323,53 @@ export default[
                
         //     ]
         // },
-        // {
-        //     name: 'Product Description',
-        //     desc: 'This is your AI-powered SEO expert, creating captivating and keyword-rich e-commerce product descriptions to boost your online sales.',
-        //     icon:'https://cdn-icons-png.flaticon.com/128/679/679922.png',
-        //     category: 'Marketting',
+        {
+            name: 'Cold- Email Generator',
+            desc: 'Not sure how to write an effective cold email? Let our AI tool craft professional, personalized emails that get replies — tailored to your goals and audience.',
+            icon:'https://cdn-icons-png.flaticon.com/128/2178/2178616.png',
+            category: 'Email tool',
            
-        //     slug: 'product-description',
-        //     aiPrompt: 'Depends on user productName and description generate small description for product for e-commer business give output  in rich text editor format  ',
-        //     form: [
-        //         {
-        //             label: 'Product Name',
-        //             field: 'input',
-        //             name: 'productName',
-        //             required:true
-        //         },
-        //         {
-        //             label: 'Product Details',
-        //             field: 'textarea',
-        //             name: 'outline',
-        //             required:true
-        //         },
+            slug: 'email-generator',
+            aiPrompt: 'You are a professional email copywriter. Based on the details provided earlier, generate a cold email that is clear, persuasive, and tailored to the recipient. Follow best practices for cold outreach — keep it concise, personalized, and include a strong call-to-action. Keep the tone professional ',
+            form: [
+                {
+                    label: 'Email Subject',
+                    field: 'input',
+                    name: 'emailSubject',
+                    required:true
+                },
+                {
+                    label: 'Offering Details',
+                    field: 'textarea',
+                    name: 'outline',
+                    required:true
+                },
                
-        //     ]
-        // },
+            ]
+        },
+        {
+            name: 'Product Description',
+            desc: 'This is your AI-powered SEO expert, creating captivating and keyword-rich e-commerce product descriptions to boost your online sales.',
+            icon:'https://cdn-icons-png.flaticon.com/128/679/679922.png',
+            category: 'Marketting',
+           
+            slug: 'product-description',
+            aiPrompt: 'You are a professional copywriter specializing in e-commerce content. Write a clear, engaging, and persuasive product description based on the provided product details. Highlight the key features, benefits, and unique selling points. Tailor the tone to match the target audience (e.g., friendly, professional, luxury, or playful) and optimize the description for SEO using relevant keywords if provided. Keep the content concise yet informative, encouraging customers to take action. Avoid technical jargon unless specified, and focus on how the product solves a problem or adds value. ',
+            form: [
+                {
+                    label: 'Product Name',
+                    field: 'input',
+                    name: 'productName',
+                    required:true
+                },
+                {
+                    label: 'Product Details',
+                    field: 'textarea',
+                    name: 'outline',
+                    required:true
+                },
+               
+            ]
+        },
     
 ]
