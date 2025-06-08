@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
+import Link from 'next/link';
 
 const Section1 = () => {
 
@@ -154,101 +155,139 @@ const Section1 = () => {
   return (
     <div
       id='section1'
-      className='w-full h-screen sticky top-0 z-10  font-urbanist flex flex-col items-center justify-center'
+      className='w-full h-screen sticky top-0 z-10 font-urbanist flex flex-col items-center justify-center'
       style={{ background: 'radial-gradient(circle, #FF0090 0%, #E0115F 100%)' }}
     >
-      <div id='section1-title' className=' text-black font-extrabold text-8xl flex flex-col items-center mt-16 gap-3'>
-
-        {/* We Fuel The Div */}
-        <div className='we-fuel-the flex justify-center items-center overflow-hidden'>
-          <span className=' inline-block'>W</span>
-          <span className=' inline-block'>E</span>
-          <span  className='ml-6 inline-block'>F</span>
-          <span className=' inline-block'>U</span>
-          <span className=' inline-block'>E</span>
-          <span className=' inline-block'>L</span>
-          <span  className='ml-6 inline-block'>T</span>
-          <span className=' inline-block'>H</span>
-          <span className=' inline-block'>E</span>
-        </div>
-        
-        {/* Future Of Creativity Div */}
-        <div className='flex justify-center items-center '>
-          <div className='future-of-creativity flex justify-center items-center overflow-hidden'>
-            <span className='text-outline-2 inline-block'>F</span>
-            <span className='text-outline-2 inline-block'>U</span>
-            <span className='text-outline-2 inline-block'>T</span>
-            <span className='text-outline-2 inline-block'>U</span>
-            <span className='text-outline-2 inline-block'>R</span>
-            <span className='text-outline-2 inline-block'>E</span>
-            <span className='text-outline-2 inline-block ml-6'>O</span>
-            <span className='text-outline-2 inline-block'>F</span>
-            <span className='text-outline-2 inline-block ml-6'>C</span>
-            <span className='text-outline-2 inline-block'>R</span>
-            <span className='text-outline-2 inline-block'>E</span>
-            <span className='text-outline-2 inline-block'>A</span>
-            <span className='text-outline-2 inline-block'>T</span>
-            <span className='text-outline-2 inline-block'>I</span>
-            <span className='text-outline-2 inline-block'>V</span>
-            <span className='text-outline-2 inline-block'>I</span>
-            <span className='text-outline-2 inline-block'>T</span>
-            <span className='text-outline-2 inline-block'>Y</span>
-          </div>
-          {/* Creativity Icon Image Div */}
-          <div className='creativity-icon-div flex justify-center items-center overflow-hidden'>
-            <span className='inline-block w-44 h-24 p-2 rounded-2xl border-black border-[2px] border-dashed   ml-4 overflow-hidden'>
-              <img id='creativity-icon' src="/Section1/creativity-icon.png" alt='creativity_icon'  className="w-full h-full object-cover rounded-xl"/>
-            </span>
-          </div>
-        </div>
-        
-        <div className='flex justify-center items-center '>
-          
-          {/* Where AI Div */}
-          <div className='where-ai flex justify-center items-center overflow-hidden'>
-            <span className='text-outline-2 inline-block'>W</span>
-            <span className='text-outline-2 inline-block'>H</span>
-            <span className='text-outline-2 inline-block'>E</span>
-            <span className='text-outline-2 inline-block'>R</span>
-            <span className='text-outline-2 inline-block'>E</span>
-            <span className='text-outline-2 inline-block ml-6'>A</span>
-            <span className='text-outline-2 inline-block'>I</span>
-          </div>
-          
-          {/* AI Icon Image Div */}
-          <div className='where-ai-img-div flex justify-center items-center overflow-hidden'>
-            <span className='inline-block w-32 h-18 p-2 rounded-2xl border-black border-[2px] border-dashed mx-4 overflow-hidden'>
-              <img src="/Section1/flexy-lettering-ai-with-prompt-sign-and-chatbot.png" alt='creativity_icon'  className="w-full h-full bg-black p-1 rounded-xl object-cover"/>
-            </span>
-          </div>
-          {/* Meets Human Div */}
-          <div className='meets-human flex justify-center items-center overflow-hidden'>
-            <span className='inline-block'>M</span>
+      {/* DESKTOP VERSION - UNCHANGED */}
+      <div className="hidden md:block w-full">
+        <div id='section1-title' className='text-black font-extrabold text-8xl flex flex-col items-center mt-16 gap-3'>
+          {/* We Fuel The Div */}
+          <div className='we-fuel-the flex justify-center items-center overflow-hidden'>
+            <span className='inline-block'>W</span>
             <span className='inline-block'>E</span>
-            <span className='inline-block'>E</span>
-            <span className='inline-block'>T'</span>
-            <span className='inline-block'>S</span>
-            <span className='inline-block ml-6'>H</span>
+            <span className='ml-6 inline-block'>F</span>
             <span className='inline-block'>U</span>
+            <span className='inline-block'>E</span>
+            <span className='inline-block'>L</span>
+            <span className='ml-6 inline-block'>T</span>
+            <span className='inline-block'>H</span>
+            <span className='inline-block'>E</span>
+          </div>
+          
+          {/* Future Of Creativity Div */}
+          <div className='flex justify-center items-center'>
+            <div className='future-of-creativity flex justify-center items-center overflow-hidden'>
+              <span className='text-outline-2 inline-block'>F</span>
+              <span className='text-outline-2 inline-block'>U</span>
+              <span className='text-outline-2 inline-block'>T</span>
+              <span className='text-outline-2 inline-block'>U</span>
+              <span className='text-outline-2 inline-block'>R</span>
+              <span className='text-outline-2 inline-block'>E</span>
+              <span className='text-outline-2 inline-block ml-6'>O</span>
+              <span className='text-outline-2 inline-block'>F</span>
+              <span className='text-outline-2 inline-block ml-6'>C</span>
+              <span className='text-outline-2 inline-block'>R</span>
+              <span className='text-outline-2 inline-block'>E</span>
+              <span className='text-outline-2 inline-block'>A</span>
+              <span className='text-outline-2 inline-block'>T</span>
+              <span className='text-outline-2 inline-block'>I</span>
+              <span className='text-outline-2 inline-block'>V</span>
+              <span className='text-outline-2 inline-block'>I</span>
+              <span className='text-outline-2 inline-block'>T</span>
+              <span className='text-outline-2 inline-block'>Y</span>
+            </div>
+            {/* Creativity Icon Image Div */}
+            <div className='creativity-icon-div flex justify-center items-center overflow-hidden'>
+              <span className='inline-block w-44 h-24 p-2 rounded-2xl border-black border-[2px] border-dashed ml-4 overflow-hidden'>
+                <img id='creativity-icon' src="/Section1/creativity-icon.png" alt='creativity_icon' className="w-full h-full object-cover rounded-xl"/>
+              </span>
+            </div>
+          </div>
+          
+          <div className='flex justify-center items-center'>
+            {/* Where AI Div */}
+            <div className='where-ai flex justify-center items-center overflow-hidden'>
+              <span className='text-outline-2 inline-block'>W</span>
+              <span className='text-outline-2 inline-block'>H</span>
+              <span className='text-outline-2 inline-block'>E</span>
+              <span className='text-outline-2 inline-block'>R</span>
+              <span className='text-outline-2 inline-block'>E</span>
+              <span className='text-outline-2 inline-block ml-6'>A</span>
+              <span className='text-outline-2 inline-block'>I</span>
+            </div>
+            
+            {/* AI Icon Image Div */}
+            <div className='where-ai-img-div flex justify-center items-center overflow-hidden'>
+              <span className='inline-block w-32 h-18 p-2 rounded-2xl border-black border-[2px] border-dashed mx-4 overflow-hidden'>
+                <img src="/Section1/flexy-lettering-ai-with-prompt-sign-and-chatbot.png" alt='creativity_icon' className="w-full h-full bg-black p-1 rounded-xl object-cover"/>
+              </span>
+            </div>
+            {/* Meets Human Div */}
+            <div className='meets-human flex justify-center items-center overflow-hidden'>
+              <span className='inline-block'>M</span>
+              <span className='inline-block'>E</span>
+              <span className='inline-block'>E</span>
+              <span className='inline-block'>T'</span>
+              <span className='inline-block'>S</span>
+              <span className='inline-block ml-6'>H</span>
+              <span className='inline-block'>U</span>
+              <span className='inline-block'>M</span>
+              <span className='inline-block'>A</span>
+              <span className='inline-block'>N</span>
+            </div>
+          </div>
+          
+          {/* Imagination Div */}
+          <div className='imagination flex justify-center items-center overflow-hidden'>
+            <span className='inline-block'>I</span>
             <span className='inline-block'>M</span>
             <span className='inline-block'>A</span>
+            <span className='inline-block'>G</span>
+            <span className='inline-block'>I</span>
+            <span className='inline-block'>N</span>
+            <span className='inline-block'>A</span>
+            <span className='inline-block'>T</span>
+            <span className='inline-block'>I</span>
+            <span className='inline-block'>O</span>
             <span className='inline-block'>N</span>
           </div>
         </div>
-        
-        {/* Imagination Div */}
-        <div className='imagination flex justify-center items-center overflow-hidden'>
-          <span className='inline-block'>I</span>
-          <span className='inline-block'>M</span>
-          <span className='inline-block'>A</span>
-          <span className='inline-block'>G</span>
-          <span className='inline-block'>I</span>
-          <span className='inline-block'>N</span>
-          <span className='inline-block'>A</span>
-          <span className='inline-block'>T</span>
-          <span className='inline-block'>I</span>
-          <span className='inline-block'>O</span>
-          <span className='inline-block'>N</span>
+      </div>
+      
+      {/* MOBILE VERSION - NEW SIMPLIFIED VERSION WITHOUT IMAGES */}
+      <div className="md:hidden w-full px-5 pt-20">
+        <div className="flex flex-col items-center text-center">
+          {/* First line */}
+          <h1 className="text-5xl font-extrabold text-black mb-5">
+            WE FUEL THE
+          </h1>
+          
+          {/* Second line */}
+          <h2 className="text-5xl font-bold mb-5" style={{ color: 'transparent', WebkitTextStroke: '1.5px black' }}>
+            FUTURE OF CREATIVITY
+          </h2>
+          
+          {/* Third line */}
+          <div className="mb-5">
+            <h2 className="text-5xl font-bold mb-2" style={{ color: 'transparent', WebkitTextStroke: '1.5px black' }}>
+              WHERE AI
+            </h2>
+            <h2 className="text-5xl font-bold text-black">
+              MEETS HUMAN
+            </h2>
+          </div>
+          
+          {/* Fourth line */}
+          <h2 className="text-5xl font-bold text-black mb-8">
+            IMAGINATION
+          </h2>
+          
+          {/* Call-to-action button */}
+          <Link href='/dashboard'>
+            <button className="mt-2 bg-black text-white py-3 px-8 rounded-full font-bold text-lg">
+              Get Started
+            </button>
+          </Link>
         </div>
       </div>
     </div>

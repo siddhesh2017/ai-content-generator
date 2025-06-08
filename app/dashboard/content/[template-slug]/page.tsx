@@ -80,7 +80,8 @@ const CreateContent = (props:PROPS) => {
   
     setLoading(true);
     setLatestFormData(formData); // Store form data for later use
-  
+  //*******************************************************************************************//
+    //Here we combine the data from user and attach it to the prompt
     const selectedPrompt = selectedTemplate?.aiPrompt;
     const finalPrompt = JSON.stringify(formData) + ', ' + selectedPrompt;
     console.log(finalPrompt);

@@ -91,8 +91,8 @@ const FormSection = ({ selectedTemplate, userFormInput, loading }: PROPS) => {
           <Image 
             src={selectedTemplate?.icon || "/placeholder.png"} 
             alt='icon' 
-            width={40} 
-            height={40}
+            width={60} 
+            height={60}
           />
         </div>
         
