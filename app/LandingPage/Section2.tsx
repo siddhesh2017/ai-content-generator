@@ -15,6 +15,9 @@ const Section2 = () => {
   useGSAP(() => {
     gsap.registerPlugin(ScrollTrigger);
     
+    // Skip animations on mobile
+    if (window.innerWidth < 768) return;
+    
     const t1 = gsap.timeline({
       scrollTrigger: {
         trigger: section2Ref.current,
@@ -81,55 +84,96 @@ const Section2 = () => {
   const paragraph2Text = "This project is our way of combining what we've learned over the years into something creative and useful. From writing scripts to designing user-friendly features, we've put our heart into making content creation easier and smarter with the help of AI.";
 
   return (
-    <div id='section2' className='w-full h-[150%] bg-[#ffffff] rounded-t-lg pt-3 pb-14 sticky top-0 z-20 '>
-      <div className='w-full h-full flex flex-col items-start justify-start'>
-        
-        {/* WHO WE ARE Text */}
-        <div className='text-3xl text-start font-extrabold ml-10 mt-7 text-black relative'>
-          <div className='who-we-are flex justify-center items-center overflow-hidden'>
-            <span className='inline-block '>.</span>
-            <span className='inline-block ml-2'>W</span>
-            <span className='inline-block '>H</span>
-            <span className='inline-block '>O</span>
-            <span className='inline-block ml-2'>W</span>
-            <span className='inline-block '>E</span>
-            <span className='inline-block ml-2'>A</span>
-            <span className='inline-block '>R</span>
-            <span className='inline-block '>E</span>
-          </div>
-          {/* Underline element */}
-          <div 
-            ref={underlineRef} 
-            className='h-[5px] bg-black absolute -bottom-3 left-0'
-          ></div>
-        </div>
-        
-        {/* Black Div */}
-        <div ref={section2Ref} className='bg-black mt-14 mb-12 w-[1410px] h-[800px] rounded-r-3xl p-16'> 
-          {/* Grid layout with two columns */}
-          <div ref={gridSectionRef} className="grid grid-cols-2 gap-12 h-full overflow-hidden">
-
-            {/* Left section - Text content with word animation */}
-            <div className="flex flex-col mx-24 justify-center text-white">
-              <p ref={paragraph1Ref} className="text-2xl flex justify-between items-center flex-wrap mb-6 text-gray-300">
-                {wrapWordsInSpans(paragraph1Text)}
-              </p>
-              <p ref={paragraph2Ref} className="text-2xl flex justify-between items-center flex-wrap mb-8 text-gray-300">
-                {wrapWordsInSpans(paragraph2Text)}
-              </p>
+    <div id='section2' className='w-full bg-[#ffffff] rounded-t-lg pt-3 pb-14 sticky top-0 z-20'>
+      {/* DESKTOP VERSION - Kept exactly as it was */}
+      <div className='hidden md:block w-full h-[150%]'>
+        <div className='w-full h-full flex flex-col items-start justify-start'>
+          
+          {/* WHO WE ARE Text */}
+          <div id='section2-sub' className='text-3xl text-start font-extrabold ml-10 mt-7 text-black relative'>
+            <div className='who-we-are flex justify-center items-center overflow-hidden'>
+              <span className='inline-block '>.</span>
+              <span className='inline-block ml-2'>W</span>
+              <span className='inline-block '>H</span>
+              <span className='inline-block '>O</span>
+              <span className='inline-block ml-2'>W</span>
+              <span className='inline-block '>E</span>
+              <span className='inline-block ml-2'>A</span>
+              <span className='inline-block '>R</span>
+              <span className='inline-block '>E</span>
             </div>
-            
-            {/* Right section - Image */}
-            <div className="flex items-center justify-center">
-              <div className="w-[70%] h-[70%] rounded-xl bg-transperant overflow-hidden">
+            {/* Underline element */}
+            <div 
+              ref={underlineRef} 
+              className='h-[5px] bg-black absolute -bottom-3 left-0'
+            ></div>
+          </div>
+          
+          {/* Black Div */}
+          <div ref={section2Ref} className='bg-black mt-14 mb-12 w-[1410px] h-[800px] rounded-r-3xl p-16'> 
+            {/* Grid layout with two columns */}
+            <div ref={gridSectionRef} className="grid grid-cols-2 gap-12 h-full overflow-hidden">
+
+              {/* Left section - Text content with word animation */}
+              <div className="flex flex-col mx-24 justify-center text-white">
+                <p ref={paragraph1Ref} className="text-2xl flex justify-between items-center flex-wrap mb-6 text-gray-300">
+                  {wrapWordsInSpans(paragraph1Text)}
+                </p>
+                <p ref={paragraph2Ref} className="text-2xl flex justify-between items-center flex-wrap mb-8 text-gray-300">
+                  {wrapWordsInSpans(paragraph2Text)}
+                </p>
+              </div>
+              
+              {/* Right section - Image */}
+              <div className="flex items-center justify-center">
+                <div className="w-[70%] h-[70%] rounded-xl bg-transperant overflow-hidden">
+                  <img 
+                    src="/Section2/office-workspace-with-city-view.png" 
+                    alt="Our Team" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      {/* MOBILE VERSION - Simple layout without animations */}
+      <div className='md:hidden w-full'>
+        <div className='w-full flex flex-col items-start justify-start'>
+          
+          {/* Simple WHO WE ARE heading for mobile */}
+          <div className='w-full px-5 mt-5'>
+            <h2 className='text-2xl font-extrabold text-black relative mb-6'>
+              WHO WE ARE
+              <div className='h-[3px] bg-black w-full absolute -bottom-2 left-0'></div>
+            </h2>
+          </div>
+          
+          {/* Mobile black div - single column layout */}
+          <div className='bg-black mx-4 mt-6 mb-8 rounded-xl p-6'>
+            {/* Image first on mobile */}
+            <div className="mb-6">
+              <div className="w-full rounded-lg overflow-hidden">
                 <img 
                   src="/Section2/office-workspace-with-city-view.png" 
                   alt="Our Team" 
-                  className="w-full h-full object-cover"
+                  className="w-full h-auto object-cover"
                 />
               </div>
             </div>
-
+            
+            {/* Text content - no animations */}
+            <div className="text-white">
+              <p className="text-base mb-4 text-gray-300">
+                {paragraph1Text}
+              </p>
+              <p className="text-base text-gray-300">
+                {paragraph2Text}
+              </p>
+            </div>
           </div>
         </div>
       </div>

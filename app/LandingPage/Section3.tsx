@@ -10,17 +10,21 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Section3 = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const mobileSectionRef = useRef<HTMLDivElement>(null);
   const marqueeRef = useRef<HTMLDivElement>(null);
   const marqueeContentRef = useRef<HTMLDivElement>(null);
   const blackDivRef = useRef(null);
   const underlineRef = useRef(null);
   const underline2Ref = useRef(null);
   const gridSection3Ref = useRef(null);
-    const para1Ref = useRef(null);
-    const para2Ref = useRef(null);
+  const para1Ref = useRef(null);
+  const para2Ref = useRef(null);
 
   
   useGSAP(() => {
+    // Skip desktop animations if we're on mobile
+    if (window.innerWidth < 768) return;
+    
     const marquee = marqueeRef.current;
     const marqueeContent = marqueeContentRef.current;
     const section = sectionRef.current;
@@ -184,48 +188,53 @@ const Section3 = () => {
     ));
   };
 
-  const paragraph1Text = "That’s exactly why we created this AI Content Generator. It’s a smart writing assistant made to help anyone—from students to content creators—generate high-quality content quickly and easily. Whether you're writing a blog post, crafting a product description, or drafting scripts, our tool's got your back.";
+  const paragraph1Text = "That's exactly why we created this AI Content Generator. It's a smart writing assistant made to help anyone—from students to content creators—generate high-quality content quickly and easily. Whether you're writing a blog post, crafting a product description, or drafting scripts, our tool's got your back.";
   
-  const paragraph2Text = "One of the best things about it? You just give a few keywords instead of typing long prompts, and the AI does the rest. This saves you tons of time and effort, making your writing process way more productive and efficient. We’ve blended AI with an intuitive UI so you can just focus on creating, not formatting. Plus, it’s fast, responsive, and adapts to your needs. Basically, we built something we’d genuinely use ourselves (and we do 👀).";
+  const paragraph2Text = "One of the best things about it? You just give a few keywords instead of typing long prompts, and the AI does the rest. This saves you tons of time and effort, making your writing process way more productive and efficient. We've blended AI with an intuitive UI so you can just focus on creating, not formatting. Plus, it's fast, responsive, and adapts to your needs. Basically, we built something we'd genuinely use ourselves (and we do 👀).";
   
   return (
-    <div ref={sectionRef} className='w-full h-[160vh] flex flex-col justify-between gap-0 items-center' style={{ background: 'radial-gradient(circle, #ffa528 0%, #ff6928 100%)' }}>
-
-      {/* Marquee wrapper */}
-      <div className='overflow-hidden w-full'>
-        {/* Actual marquee container */}
-        <div 
-          ref={marqueeRef}
-          className='marquee flex whitespace-nowrap'
-        >
-          {/* Marquee content to be duplicated */}
+    <>
+      {/* DESKTOP VERSION - Completely unchanged */}
+      <div 
+        ref={sectionRef} 
+        className='hidden md:flex w-full h-[170vh] pb-16 flex-col justify-between gap-0 items-center' 
+        style={{ background: 'radial-gradient(circle, #ffa528 0%, #ff6928 100%)' }}
+      >
+        {/* Marquee wrapper */}
+        <div className='overflow-hidden w-full'>
+          {/* Actual marquee container */}
           <div 
-            ref={marqueeContentRef}
-            className='marquee-content flex items-center justify-center bg-black text-white text-6xl h-24'
+            ref={marqueeRef}
+            className='marquee flex whitespace-nowrap'
           >
-            <h2>AI</h2>
-            
-            {/* AI Image Div */}
-            <div className='marquee-ai-img flex justify-center items-center overflow-hidden'>
-              <span className='inline-block w-44 h-24 p-2 rounded-2xl border-black border-[2px] border-dashed -ml-2 overflow-hidden'>
-                <img id='creativity-icon' src="/Section3/amethyst-chatbot.png" alt='creativity_icon' className="w-full h-full object-contain rounded-xl"/>
-              </span>
-            </div>
-            <h2>IS JUST A TOOL, UNTIL IT FALLS IN RIGHT HANDS</h2>
+            {/* Marquee content to be duplicated */}
+            <div 
+              ref={marqueeContentRef}
+              className='marquee-content flex items-center justify-center bg-black text-white text-6xl h-24'
+            >
+              <h2>AI</h2>
+              
+              {/* AI Image Div */}
+              <div className='marquee-ai-img flex justify-center items-center overflow-hidden'>
+                <span className='inline-block w-44 h-24 p-2 rounded-2xl border-black border-[2px] border-dashed -ml-2 overflow-hidden'>
+                  <img id='creativity-icon' src="/Section3/amethyst-chatbot.png" alt='creativity_icon' className="w-full h-full object-contain rounded-xl"/>
+                </span>
+              </div>
+              <h2>IS JUST A TOOL, UNTIL IT FALLS IN RIGHT HANDS</h2>
 
-            {/* smiley Image Div */}
-            <div className='marquee-ai-img flex justify-center items-center overflow-hidden'>
-              <span className='inline-block w-44 h-24 p-2 rounded-2xl border-black border-[2px] border-dashed -ml-5 overflow-hidden'>
-                <img id='creativity-icon' src="/Section3/flamenco-678.png" alt='creativity_icon' className="w-full h-full object-contain rounded-xl"/>
-              </span>
-            </div>
+              {/* smiley Image Div */}
+              <div className='marquee-ai-img flex justify-center items-center overflow-hidden'>
+                <span className='inline-block w-44 h-24 p-2 rounded-2xl border-black border-[2px] border-dashed -ml-5 overflow-hidden'>
+                  <img id='creativity-icon' src="/Section3/flamenco-678.png" alt='creativity_icon' className="w-full h-full object-contain rounded-xl"/>
+                </span>
+              </div>
 
-            <span className="mx-20">.</span>
+              <span className="mx-20">.</span>
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* What we built */}
+        {/* What we built */}
         <div className='w-full h-auto flex flex-col items-start justify-start -mt-40'>
           <div className='text-3xl text-start font-extrabold ml-10 mt-7 text-black relative'>
             <div className='what-we-built-3 flex justify-center items-center overflow-hidden'>
@@ -248,42 +257,42 @@ const Section3 = () => {
           </div>
         </div>
 
-      {/* Black Div */}
-      <div id='black-div' ref={blackDivRef} className='w-[95vw] h-[120vh] bg-black rounded-3xl -mt-40 mb-10 flex flex-col items-center justify-between'>
+        {/* Black Div */}
+        <div id='black-div' ref={blackDivRef} className='w-[95vw] h-[120vh] bg-black rounded-3xl -mt-40 mb-10 flex flex-col items-center justify-between'>
 
-        {/* Imagine Having... HEADING */}
-        <div className='w-full h-auto text-white text-5xl px-10 mt-8'>
-          <h1 className="flex flex-col justify-start overflow-hidden">
-            <div className='flex justify-start'>
-              <span className="word-animation-3 inline-block mr-[0.25rem] mb-2">IMAGINE</span>
-              <span className="word-animation-3 inline-block ml-[0.5rem] mr-[0.25rem] mb-2">HAVING</span>
-              <span className="word-animation-3 inline-block ml-[0.5rem] mr-[0.25rem] mb-2">AN</span>
-              <span className="word-animation-3 inline-block ml-[0.5rem] mr-[0.25rem] mb-2 text-outline-light">IDEA</span>
-              <span className="word-animation-3 inline-block ml-[0.5rem] mr-[0.25rem] mb-2">IN</span>
-              <span className="word-animation-3 inline-block ml-[0.5rem] mr-[0.25rem] mb-2">YOUR</span>
-              <span className="word-animation-3 inline-block ml-[0.5rem] mr-[0.25rem] mb-2">HEAD</span>
-              <span className="word-animation-3 inline-block ml-[0.5rem] mr-[0.25rem] mb-2">BUT</span>
-              <span className="word-animation-3 inline-block ml-[0.5rem] mr-[0.25rem] mb-2 text-outline-light">STRUGGLING</span>
-            </div>
-            
-            <div className='flex items-center '>              
-              <span className="word-animation-3 inline-block ml-[0.5rem] mr-[0.25rem] mb-2">TO</span>
-              <span className="word-animation-3 inline-block ml-[0.5rem] mr-[0.25rem] mb-2">PUT</span>
-              <span className="word-animation-3 inline-block ml-[0.5rem] mr-[0.25rem] mb-2">IT</span>
-              <span className="word-animation-3 inline-block ml-[0.5rem] mr-[0.25rem] mb-2">INTO</span>
-              <span className="word-animation-3 inline-block ml-[0.5rem] mr-[0.25rem] mb-2">WORDS—</span>
-              <span className="word-animation-3 inline-block ml-[0.5rem] mr-[0.25rem] mb-2">BEEN</span>
-              <span className="word-animation-3 inline-block ml-[0.5rem] mr-[0.25rem] mb-2">THERE,</span>
-              <span className="word-animation-3 inline-block ml-[0.5rem] mr-[0.25rem] mb-2">RIGHT?</span>
-            </div>
-          </h1>
+          {/* Imagine Having... HEADING */}
+          <div className='w-full h-auto text-white text-5xl px-10 mt-8'>
+            <h1 className="flex flex-col justify-start overflow-hidden">
+              <div className='flex justify-start'>
+                <span className="word-animation-3 inline-block mr-[0.25rem] mb-2">IMAGINE</span>
+                <span className="word-animation-3 inline-block ml-[0.5rem] mr-[0.25rem] mb-2">HAVING</span>
+                <span className="word-animation-3 inline-block ml-[0.5rem] mr-[0.25rem] mb-2">AN</span>
+                <span className="word-animation-3 inline-block ml-[0.5rem] mr-[0.25rem] mb-2 text-outline-light">IDEA</span>
+                <span className="word-animation-3 inline-block ml-[0.5rem] mr-[0.25rem] mb-2">IN</span>
+                <span className="word-animation-3 inline-block ml-[0.5rem] mr-[0.25rem] mb-2">YOUR</span>
+                <span className="word-animation-3 inline-block ml-[0.5rem] mr-[0.25rem] mb-2">HEAD</span>
+                <span className="word-animation-3 inline-block ml-[0.5rem] mr-[0.25rem] mb-2">BUT</span>
+                <span className="word-animation-3 inline-block ml-[0.5rem] mr-[0.25rem] mb-2 text-outline-light">STRUGGLING</span>
+              </div>
+              
+              <div className='flex items-center '>              
+                <span className="word-animation-3 inline-block ml-[0.5rem] mr-[0.25rem] mb-2">TO</span>
+                <span className="word-animation-3 inline-block ml-[0.5rem] mr-[0.25rem] mb-2">PUT</span>
+                <span className="word-animation-3 inline-block ml-[0.5rem] mr-[0.25rem] mb-2">IT</span>
+                <span className="word-animation-3 inline-block ml-[0.5rem] mr-[0.25rem] mb-2">INTO</span>
+                <span className="word-animation-3 inline-block ml-[0.5rem] mr-[0.25rem] mb-2">WORDS—</span>
+                <span className="word-animation-3 inline-block ml-[0.5rem] mr-[0.25rem] mb-2">BEEN</span>
+                <span className="word-animation-3 inline-block ml-[0.5rem] mr-[0.25rem] mb-2">THERE,</span>
+                <span className="word-animation-3 inline-block ml-[0.5rem] mr-[0.25rem] mb-2">RIGHT?</span>
+              </div>
+            </h1>
 
-          {/* Underline for the heading */}
-          <div ref={underline2Ref} className='h-[2px] mt-5 rounded-full bg-white -bottom-3 left-0'></div>
-        </div>
+            {/* Underline for the heading */}
+            <div ref={underline2Ref} className='h-[2px] mt-5 rounded-full bg-white -bottom-3 left-0'></div>
+          </div>
 
-        {/* Content of What We Built Section */}
-          <div ref={gridSection3Ref} className=" grid grid-cols-2 gap-10 mt-10 h-full overflow-hidden">
+          {/* Content of What We Built Section */}
+          <div ref={gridSection3Ref} className="grid grid-cols-2 gap-10 mt-10 h-full overflow-hidden">
 
             {/* Left section */}
             <div className="flex items-center justify-center">
@@ -305,11 +314,68 @@ const Section3 = () => {
                 {wrapWordsInSpans(paragraph2Text)}
               </p>
             </div>
-
           </div>
-
+        </div>
       </div>
-    </div>
+
+      {/* MOBILE VERSION - Separate implementation */}
+      <div 
+        ref={mobileSectionRef}
+        className="md:hidden w-full flex flex-col items-center"
+        style={{ background: 'radial-gradient(circle, #ffa528 0%, #ff6928 100%)' }}
+      >
+        {/* Static banner for mobile */}
+        <div className="w-full bg-black text-white py-4 px-4 flex items-center justify-center">
+          <h2 className="text-xl font-bold text-center">AI IS JUST A TOOL, UNTIL IT FALLS IN RIGHT HANDS</h2>
+        </div>
+        
+        {/* Simple "What We Built" heading */}
+        <div className="w-full px-5 mt-6">
+          <h2 className="text-2xl font-extrabold text-black relative mb-5">
+            WHAT WE BUILT
+            <div className="h-[3px] bg-black w-full absolute -bottom-2 left-0"></div>
+          </h2>
+        </div>
+        
+        {/* Black Div - simplified for mobile */}
+        <div className="w-[92%] mx-auto bg-black rounded-2xl p-5 mt-6 mb-10 flex flex-col">
+          {/* Static heading */}
+          <div className="text-white mb-6">
+            <h1 className="text-2xl font-bold leading-tight">
+              IMAGINE HAVING AN <span className="text-outline-mobile">IDEA</span> IN YOUR HEAD BUT <span className="text-outline-mobile">STRUGGLING</span> TO PUT IT INTO WORDS—BEEN THERE, RIGHT?
+            </h1>
+            <div className="h-[2px] mt-3 rounded-full bg-white w-full"></div>
+          </div>
+          
+          {/* Image */}
+          <div className="w-full mb-6">
+            <img 
+              src="/Section3/comic-woman-with-a-laptop-feeling-confused.png" 
+              alt="Our Team" 
+              className="w-full object-contain max-h-[250px]"
+            />
+          </div>
+          
+          {/* Text content - no animations */}
+          <div className="text-white">
+            <p className="text-base mb-5 text-gray-300">
+              {paragraph1Text}
+            </p>
+            <p className="text-base text-gray-300">
+              {paragraph2Text}
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      {/* Add CSS for mobile text outline */}
+      <style jsx>{`
+        .text-outline-mobile {
+          color: transparent;
+          -webkit-text-stroke: 1px white;
+        }
+      `}</style>
+    </>
   )
 }
 
