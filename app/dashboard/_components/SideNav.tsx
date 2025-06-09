@@ -44,7 +44,6 @@ function SideNav() {
   const MenuList = [
     { name: 'Dashboard', icon: Home, path: '/dashboard', color: '#E30F64' },
     { name: 'History', icon: FileClock, path: '/dashboard/history', color: '#FF7028' },
-    { name: 'Billing', icon: WalletCards, path: '/dashboard/billing', color: '#00CCFF' },
     { name: 'Settings', icon: Settings, path: '/dashboard/settings', color: '#9747FF' },
   ];
 
