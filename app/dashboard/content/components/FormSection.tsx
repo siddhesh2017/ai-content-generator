@@ -85,15 +85,15 @@ const FormSection = ({ selectedTemplate, userFormInput, loading }: PROPS) => {
       {/* Template Header */}
       <div className="flex items-start gap-2 sm:gap-3 md:gap-4 mb-3 sm:mb-4 md:mb-6">
         <div 
-          className="p-2 sm:p-2.5 md:p-3 rounded-md sm:rounded-lg md:rounded-xl border border-gray-700" 
+          className="p-2 sm:p-2.5 md:p-3 rounded-md sm:rounded-lg md:rounded-xl border border-gray-700 flex items-center justify-center" 
           style={{ backgroundColor: `${templateColor}20` }}
         >
           <Image 
             src={selectedTemplate?.icon || "/placeholder.png"} 
             alt='icon' 
-            width={60} 
-            height={60}
-            className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10"
+            width={32}  
+            height={32}
+            className="w-8 h-8" // Fixed size on all screens
           />
         </div>
         

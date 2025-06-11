@@ -138,7 +138,7 @@ const CreateContent = (props:PROPS) => {
   
   
   return (
-    <div className='p-4 sm:p-6 rounded-xl bg-black h-auto'>
+    <div className='p-4 sm:p-6 rounded-xl bg-black h-auto overflow-hidden'>
       <div>
         <Link href={'/dashboard'}>
           <Button><ArrowLeft/></Button>
