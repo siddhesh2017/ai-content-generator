@@ -32,7 +32,6 @@ const CreateContent = (props:PROPS) => {
   
   const selectedTemplate:TEMPLATE | undefined = Templates?.find(item => item.slug == props.params['template-slug'])
 
-  const {totalUsage, setTotalUsage} = useContext(TotalUsageContext)
 
   // const generateAIContent = async (formData:any) => {
   //   //after development make it 10,000
@@ -72,11 +71,6 @@ const CreateContent = (props:PROPS) => {
   const [latestFormData, setLatestFormData] = useState<any>(null); // Store form data
 
   const generateAIContent = async (formData: any) => {
-    if (totalUsage >= 100000) {
-      console.log("Please Upgrade");
-      router.push('/dashboard/billing/page');
-      return;
-    }
   
     setLoading(true);
     setLatestFormData(formData); // Store form data for later use
@@ -144,13 +138,13 @@ const CreateContent = (props:PROPS) => {
   
   
   return (
-    <div className='p-6 rounded-xl bg-black h-auto'>
+    <div className='p-4 sm:p-6 rounded-xl bg-black h-auto'>
       <div>
         <Link href={'/dashboard'}>
           <Button><ArrowLeft/></Button>
         </Link>
       </div>
-      <div className='grid grid-cols-1 xl:grid-cols-3 gap-5 p-5 pt-7'>
+      <div className='grid grid-cols-1 xl:grid-cols-3 gap-5  sm:p-5 pt-3 sm:pt-7'>
         {/* FormSection */}
         <FormSection userFormInput={(v:any)=> generateAIContent(v)} selectedTemplate={selectedTemplate} loading={loading} />
         {/* OutputSection */}

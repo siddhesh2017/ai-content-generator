@@ -37,7 +37,7 @@ function Layout({ children, }: Readonly<{ children: React.ReactNode; }>) {
         {/* Main Content - will resize automatically with flex-1 */}
         <div className="flex-1 transition-all duration-500 ease-in-out">
           {/* Content Area */}
-          <div className="p-4">
+          <div className="py-4 pr-4 sm:pl-4">
             {children}
           </div>
         </div>

@@ -2,7 +2,6 @@
 import { FileClock, Home, Settings, WalletCards, Menu, Zap } from 'lucide-react';
 import { usePathname, useRouter } from 'next/navigation';
 import React, { useState, useEffect } from 'react';
-import UsageTrack from './UsageTrack';
 import Link from 'next/link';
 
 function SideNav() {
@@ -125,26 +124,6 @@ function SideNav() {
         })}
       </div>
       
-      {/* Usage Section - Commented out as requested
-      <div className={`absolute bottom-4 sm:bottom-6 md:bottom-8 left-0 right-0 transition-all duration-300 ${
-        isCollapsed ? 'px-1.5 sm:px-2 md:px-3' : 'px-2 sm:px-4 md:px-5'
-      }`}>
-        {!isCollapsed ? (
-          <div className="bg-black backdrop-blur-sm rounded-xl p-2 sm:p-3 md:p-4 border border-gray-800">
-            <UsageTrack />
-          </div>
-        ) : (
-          <div className="group relative flex justify-center">
-            <div className="bg-black backdrop-blur-sm p-1.5 sm:p-2 md:p-3 rounded-xl cursor-pointer hover:bg-gray-900 transition-all border border-gray-800">
-              <Zap size={16} className="sm:size-18 md:size-20" style={{ color: '#FF7028' }} />
-            </div>
-            <div className="absolute left-full ml-2 sm:ml-3 md:ml-4 px-2 sm:px-2.5 md:px-3 py-1 sm:py-1.5 md:py-2 bg-black text-white text-xs sm:text-sm rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 whitespace-nowrap z-50 border border-gray-800">
-              Usage Statistics
-            </div>
-          </div>
-        )}
-      </div>
-      */}
     </div>
   );
 }

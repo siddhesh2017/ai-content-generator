@@ -23,9 +23,7 @@ export default function Home() {
   const lastScrollYRef = useRef(window.scrollY);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   
-  // Initial animations only
   useGSAP(() => {
-    // Initial setup
     gsap.set(navbarRef.current, { 
       opacity: 1,
       y: 0
@@ -56,7 +54,8 @@ export default function Home() {
       if (mobileMenuOpen) {
         setMobileMenuOpen(false);
       }
-
+      
+      //Code to Hide and unhide navbar on scroll
       const currentScrollY = window.scrollY;
       const lastScrollY = lastScrollYRef.current;
       const direction = currentScrollY > lastScrollY ? 'down' : 'up';
@@ -66,7 +65,7 @@ export default function Home() {
         
         // Use GSAP for the scroll-based show/hide animation
         gsap.to(navbarRef.current, {
-          y: direction === 'down' ? -150 : 0, // Same as your -translate-y-[150%]
+          y: direction === 'down' ? -150 : 0,
           duration: 0.5,
           ease: "power3.out"
         });
@@ -79,7 +78,7 @@ export default function Home() {
     return () => window.removeEventListener('scroll', updateDirection);
   }, [scrollDirection, mobileMenuOpen]);
 
-  // Handle mobile menu animations
+  // Handle mobile menu animations and scroll to sections
   useEffect(() => {
     if (!mobileMenuRef.current) return;
     
@@ -102,12 +101,14 @@ export default function Home() {
     }
   }, [mobileMenuOpen]);
 
+  //Handle mobile menu toggle 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
   const scrollToFeatures = () => {
-    // Close mobile menu if open
+    // Close mobile menu when scrolled to features section
+    // This ensures the mobile menu closes when navigating to features section
     if (mobileMenuOpen) {
       setMobileMenuOpen(false);
     }
@@ -284,7 +285,7 @@ export default function Home() {
         </div>
       </div>
       
-      {/* Page Content */}
+      {/* Desktop layout Content */}
       <div id='reveal-on-scroll-and-overlap' className="w-full h-auto relative" data-scroll-section>
         <Section1/>
         <Section2/>

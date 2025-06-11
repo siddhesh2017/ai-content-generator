@@ -173,42 +173,42 @@ export default[
         //         }
         //     ]
         // },
-        // {
-        //     name: 'Instagram Post Generator',
-        //     desc: 'An AI tool that serves as your personal blog post title writer, generating catchy and viral-worthy titles in your chosen language.',
-        //     icon: 'https://cdn-icons-png.flaticon.com/128/15713/15713420.png',
-        //     category: 'blog',
+        {
+            name: 'Instagram Post Generator',
+            desc: 'An AI tool that serves as your personal blog post title writer, generating catchy and viral-worthy titles in your chosen language.',
+            icon: 'https://cdn-icons-png.flaticon.com/128/15713/15713420.png',
+            category: 'blog',
            
-        //     slug: 'instagram-post-generator',
-        //     aiPrompt: 'Generate 3 Instagram post depends on a given keywords and give output in  in rich text editor format',
-        //     form: [
-        //         {
-        //             label: 'Enter Keywords for your post',
-        //             field: 'input',
-        //             name: 'keywords',
-        //             required:true
-        //         },
+            slug: 'instagram-post-generator',
+            aiPrompt: 'Generate 3 Instagram post depends on a given keywords and give output in  in rich text editor format',
+            form: [
+                {
+                    label: 'Enter Keywords for your post',
+                    field: 'input',
+                    name: 'keywords',
+                    required:true
+                },
                
-        //     ]
-        // },
-        // {
-        //     name: 'Instagram Hash Tag Generator',
-        //     desc: 'An AI tool that serves as your personal blog post title writer, generating catchy and viral-worthy titles in your chosen language.',
-        //     icon: 'https://cdn-icons-png.flaticon.com/128/7045/7045432.png',
-        //     category: 'blog',
+            ]
+        },
+        {
+            name: 'Instagram Hash Tag Generator',
+            desc: 'An AI tool that serves as your personal blog post title writer, generating catchy and viral-worthy titles in your chosen language.',
+            icon: 'https://cdn-icons-png.flaticon.com/128/7045/7045432.png',
+            category: 'blog',
            
-        //     slug: 'instagram-hash-tag-generator',
-        //     aiPrompt: 'Generate 15 Instagram hash tag depends on a given keywords and give output in  in rich text editor format',
-        //     form: [
-        //         {
-        //             label: 'Enter Keywords for your instagram hastag',
-        //             field: 'input',
-        //             name: 'keywords',
-        //             required:true
-        //         },
+            slug: 'instagram-hash-tag-generator',
+            aiPrompt: 'Generate 15 Instagram hash tag depends on a given keywords and give output in  in rich text editor format',
+            form: [
+                {
+                    label: 'Enter Keywords for your instagram hastag',
+                    field: 'input',
+                    name: 'keywords',
+                    required:true
+                },
                
-        //     ]
-        // },
+            ]
+        },
         {
             name: 'Instagram Post/Reel Idea',
             desc: 'An AI tool that generate New and trending instagram idea depends on your niche',
